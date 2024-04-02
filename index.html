@@ -4,8 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quality Inc/Dec</title>
+    <style>
+        body{
+            background-color:#f7f6f6;
+        }
+        .product-card{
+            background-color: #fff;
+            width: 250px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0,0,0.2);
+            display: block;
+            margin: 30px auto;
+            padding: 3px;
+           
+        }
+        .product-img{
+            height: 200px;
+            display: block;
+            margin: 5px auto;
+            border-radius: 20px;
+            background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+            padding: 10px 20px;
+        }
+        .product-title{
+            font-size: 18px;
+        }
+        .card-body{
+            margin-left: 7px;
+        }
+        .product-description{
+            font-size: 12px;
+        }
+        .product-price{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .btn-buy-now{
+            background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%); 
+            border: none;
+            color: #fff;
+            border-radius: 20px;
+            padding: 5px 20px;
+            display: block;
+            margin: 10px auto;
+        }
+        .btn-quantity{
+            height: 25px;
+        }
+        .quantity-btn-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+         .quantity-text{
+            font-size: 25px;
+            margin: auto 10px;
+         }
+    </style>
 </head>
 <body>
-    
+    <div class="product-card">
+        <img src="shoes.jpg" class="product-img"/>
+        <div class="card-body">
+            <h1 class="product-title">Sporty Sneakers</h1>
+            <p class="product-description">
+                "Elevate your stride with our sporty sneakers. Lightweight, breathable, and stylish for any activity. Get yours now!"
+            </p>
+            <p class="product-price">Rs.399</p>
+
+            <p class="show-quantity">1 x 399</p>
+            <p class="show-total">Total:399</p>
+
+            <div class="quantity-btn-container">
+              <img src="minus.png" class="btn-quantity" onclick="dec()"/>
+              <span class="quantity-text" id="quantity-text">1</span>
+              <img src="add.png" class="btn-quantity" onclick="inc()"/>
+            </div>
+
+            <button type="button" class="btn-buy-now">Buy Now</button>
+        </div>
+    </div>
+    <script>
+        const quantityText=document.getElementById("quantity-text");
+        const showQuantity=document.getElementById("show-quantity");
+        const showTotal=document.getElementById("show-total");
+
+        function inc(){
+            let quantity=parseInt(quantityText.innertext);
+            if(quantity<10){
+                quantityText.innertext
+            }
+        }
+
+    </script>
 </body>
 </html>
