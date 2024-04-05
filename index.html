@@ -3,100 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quality Inc/Dec</title>
+    <title>Document</title>
     <style>
         body{
             background-color:#f7f6f6;
         }
-        .product-card{
-            background-color: #fff;
-            width: 250px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0,0,0.2);
-            display: block;
-            margin: 30px auto;
+        .container{
+            background-color: white;
+            width: 200px;
             padding: 3px;
-           
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgb(0, 0, 0,0.2);
         }
         .product-img{
-            height: 200px;
-            display: block;
+           height: 100px;
             margin: 5px auto;
-            border-radius: 20px;
-            background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
-            padding: 10px 20px;
+            display: block;
+            padding:5px auto;
+            border-radius:10px 20px;
+           background-image:linear-gradient(135 deg,#adbcff 10%,#0396ff 100%);
+        }
+        .description-container{
+           margin-left: 7px;
         }
         .product-title{
-            font-size: 18px;
+            
+            font-size: 16px;
         }
-        .card-body{
-            margin-left: 7px;
+        .product-describ{
+          
+            font-size: 10px;
         }
-        .product-description{
-            font-size: 12px;
-        }
-        .product-price{
+        .product-prise{
+            font-size: 15px;
             font-weight: bold;
-            font-size: 20px;
         }
-        .btn-buy-now{
-            background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%); 
-            border: none;
-            color: #fff;
-            border-radius: 20px;
-            padding: 5px 20px;
-            display: block;
-            margin: 10px auto;
+        .quantity-container{
+            display: flex;
+           justify-content: center;
+           align-items: center;
+           cursor: pointer;
         }
         .btn-quantity{
+            display: block;
+            border-radius: 50%;
+            border: none;
+           
             height: 25px;
-        }
-        .quantity-btn-container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
             cursor: pointer;
         }
-         .quantity-text{
-            font-size: 25px;
+        .quantity{
+            font-size: 15px;
             margin: auto 10px;
-         }
+        }
+        .btn-byeNow{
+          
+            border-radius: 20px;
+            background-image:linear-gradient(135 deg,#adbcff 10%,#0396ff 100%);
+            border: none;
+            padding: 5px 20px;
+            margin: 10px auto;
+           display: block;
+           
+            cursor: pointer;
+        }
+        .show-quantity{
+            font-size: 15px;
+        }
+        .show-total{
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
-    <div class="product-card">
-        <img src="shoes.jpg" class="product-img"/>
-        <div class="card-body">
+    <div class="container">
+        <img src="./shoes.jpg" class="product-img"/>
+
+        <div class="description-container">
             <h1 class="product-title">Sporty Sneakers</h1>
-            <p class="product-description">
-                "Elevate your stride with our sporty sneakers. Lightweight, breathable, and stylish for any activity. Get yours now!"
-            </p>
-            <p class="product-price">Rs.399</p>
-
-            <p class="show-quantity">1 x 399</p>
-            <p class="show-total">Total:399</p>
-
-            <div class="quantity-btn-container">
-              <img src="minus.png" class="btn-quantity" onclick="dec()"/>
-              <span class="quantity-text" id="quantity-text">1</span>
-              <img src="add.png" class="btn-quantity" onclick="inc()"/>
+            <p class="product-describ">Sporty sneakers are athletic footwear designed for comfort, support, and style during physical activity.</p>
+            <p class="product-prise"><b>Rs.100</b></p>
+            <p id="show-quantity">1*100</p>
+            <p id="show-total"><b></b></p>
+            <div class="quantity-container">
+                <img src="./minus.png" class="btn-quantity"  onclick="decrement()"/>
+                <span class="quantity" id="quantity-text">1</span>
+                <img src="./add.png" class="btn-quantity"  onclick="increment()"/>
             </div>
-
-            <button type="button" class="btn-buy-now">Buy Now</button>
+            <button class="btn-byeNow">Buy Now</button>
         </div>
     </div>
+
     <script>
-        const quantityText=document.getElementById("quantity-text");
-        const showQuantity=document.getElementById("show-quantity");
-        const showTotal=document.getElementById("show-total");
-
-        function inc(){
-            let quantity=parseInt(quantityText.innertext);
-            if(quantity<10){
-                quantityText.innertext
+        function decrement(){
+            const element = document.getElementById("quantity-text");
+            const show_quantity = document.getElementById("show-quantity");
+            const show_total = document.getElementById("show-total");
+            let quantity = parseInt(element.innerText);
+            if(quantity>1){
+                element.innerText = --quantity;
             }
+            else{
+                alert("Quantity should be more than 0");
+            }
+            show_quantity.innerText = `${quantity} * 100`;
+            show_total.innerText = `Total : ${quantity *100}`;
         }
-
+        function increment(){
+            const element = document.getElementById("quantity-text");
+            const show_quantity = document.getElementById("show-quantity");
+            const show_total = document.getElementById("show-total");
+            let quantity = parseInt(element.innerText);
+            if(quantity<10){
+                element.innerText = ++quantity;
+            }
+            else{
+                alert("can't place order with more than 10 quantity");
+            }
+            show_quantity.innerText = `${quantity} * 100`;
+            show_total.innerText = `Total : ${quantity *100}`;
+        }
     </script>
 </body>
 </html>
